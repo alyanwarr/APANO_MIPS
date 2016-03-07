@@ -26,11 +26,11 @@ instructions.
 User is then redirected into a window where he/she should write his/her MIPS instructions ,
 then press "RUN" to submit the instructions entered.
 
-<img src="https://cloud.githubusercontent.com/assets/12968456/13579155/89ac7ed0-e4a4-11e5-81b6-3a00b18ef859.png" width="400">
+<img src="https://cloud.githubusercontent.com/assets/12968456/13579155/89ac7ed0-e4a4-11e5-81b6-3a00b18ef859.png" width="350">
 
 Simulation process starts when user presses "RUN" button.
 
-<img src="https://cloud.githubusercontent.com/assets/12968456/13579156/89ca7534-e4a4-11e5-9989-89ea0080058f.png" width="800">
+<img src="https://cloud.githubusercontent.com/assets/12968456/13579156/89ca7534-e4a4-11e5-9989-89ea0080058f.png" width="700">
 
 User shall press "Continue" to keep track of the data path cycle of the current instruction, or
 press "NEXT" to go to the second instruction. User can also press the button at any of the data
@@ -41,6 +41,54 @@ items to view/keep track of values (reg file, data memory ,) data items.
 ## Control Unit Truth Table
 
 <img src="https://cloud.githubusercontent.com/assets/12968456/13579158/89ea6330-e4a4-11e5-9bc4-5ed001734892.png" width="800">
+
+## Examples
+
+* Sum all numbers between a user-input defined number and another user-input defined
+number.
+
+
+Code Tested:
+
+
+`add $t0,$t0,$a0`
+
+`LOOP: slt $t2,$t0,$a1`
+
+`beq $t2,$zero,EXIT`
+
+`add $s0,$s0,$t0`
+
+`addi $t0,$t0,1`
+
+`j LOOP`
+
+`EXIT: add $s0,$s0,$t0`
+
+Data associated : $a0 = 1 , $a1= 10 -> $s0 (at the end) = 55
+
+* Greatest Common Divisor (GCD)
+
+Code Tested:
+
+`gcd: beq $a0,$a1,exit`
+
+`slt $t0,$a1,$a0`
+
+`bne $t0,$zero,L1`
+
+`sub $a1,$a1,$a0`
+
+`j gcd`
+
+`L1: sub $a0,$a0,$a1`
+
+`j gcd`
+
+`exit: add $v0,$a0,$zero`
+
+Data associated: $a0=5 ,$a1 = 15 -> $v0 (at the end) = 5
+
 ## Contribute
 
 1. Fork it
@@ -59,24 +107,5 @@ items to view/keep track of values (reg file, data memory ,) data items.
 * Peter Magdi
 
 ## License
-The MIT License (MIT)
+APANO MIPS is licensed under the MIT license. take a look at the [LICENSE](https://github.com/alyanwarr/APANO_MIPS/blob/master/LICENSE) for more information.
 
-Copyright (c) 2016 Aly Anwar
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
