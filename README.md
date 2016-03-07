@@ -13,6 +13,9 @@ APANO MIPS supports the following instructions:
 * Control flow: beq, bne, j, jal, jr
 * Comparison: slt, slti,sltu,sltui
 
+## Installation
+`git clone https://github.com/alyanwarr/APANO_MIPS.git`
+
 ## Usage
 Program starts with a message box informing user with instructions supported, and step-by-
 step guide on how to use the program including the correct format to enter his/her
